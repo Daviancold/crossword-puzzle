@@ -29,7 +29,7 @@ export const FinalPage: React.FC<IBackwardPage> = ({ backPage }) => {
         textFirstLn="❤️ Yay!! You said YES! 🫶🏻"
         textSecondLn="To many more beautiful memories 🥹"
         backwardNav={backPage}
-        textProps="bg-black"
+        textProps="bg-black bg-opacity-60"
       />
     </>
   );
