@@ -7,6 +7,8 @@ import { useEffect, useRef, useState, type Ref } from "react";
 import { BackHeader } from "../components/BackHeader";
 import AlertDialogSlide from "../components/Dialog";
 import { IBidirectionalPage } from "../types/IPageNavigation";
+import { useRecoilState } from "recoil";
+import { puzzleStatus } from "../atom/puzzleStateAtom";
 
 const lightTheme = {
   allowNonSquare: true,
@@ -25,7 +27,8 @@ const darkTheme = {
 
 export const CrosswordPage: React.FC<IBidirectionalPage> = (props) => {
   const [theme, setTheme] = useState(lightTheme);
-  const [isSolved, setIsSolved] = useState(false);
+  const [showContinue, setShowContinue] = useState(false);
+  const [isSolved, setIsSolved] = useRecoilState(puzzleStatus);
   const crosswordRef: Ref<CrosswordProviderImperative> | undefined =
     useRef(null);
 
@@ -57,6 +60,7 @@ export const CrosswordPage: React.FC<IBidirectionalPage> = (props) => {
   useEffect(() => {
     if (isSolved) {
       crosswordRef.current?.fillAllAnswers();
+      setShowContinue(true);
     }
   }, []);
 
@@ -70,7 +74,6 @@ export const CrosswordPage: React.FC<IBidirectionalPage> = (props) => {
       </div>
       <div className="flex justify-center pt-6 gap-6">
         <AlertDialogSlide
-          puzzleStatus={isSolved}
           checkPuzzle={handleCheck}
           nextPage={props.forwardPage}
         />
@@ -80,6 +83,14 @@ export const CrosswordPage: React.FC<IBidirectionalPage> = (props) => {
         >
           Clear
         </button>
+        {showContinue && (
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={props.forwardPage}
+          >
+            Continue
+          </button>
+        )}
       </div>
     </div>
   );

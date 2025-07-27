@@ -4,10 +4,10 @@ import { CrosswordPage } from "./pages/CrosswordPage";
 import { MainPage } from "./pages/MainPage";
 import { QuestionPage } from "./pages/QuestionPage";
 import { RecoilRoot } from "recoil";
+import { FinalPage } from "./pages/FinalPage";
 
 function App() {
   const [page, setPage] = useState(2);
-  const [isSolved, setIsSolved] = useState(false);
 
   const setBack = () => {
     setPage(page - 1);
@@ -26,7 +26,7 @@ function App() {
         ) : page == 2 ? (
           <QuestionPage backPage={setBack} forwardPage={setForward} />
         ) : (
-          <h1>hello</h1>
+          <FinalPage backPage={setBack} />
         )}
       </div>
     </RecoilRoot>

@@ -12,10 +12,11 @@ export interface IForwardPage {
 export interface ITextPage {
     textFirstLn: string,
     textSecondLn: string,
-    buttonText: string,
-    ButtonIcon?: OverridableComponent<SvgIconTypeMap<{}, "svg">>; 
-    backwardNav?: () => void
-    forwardNav?: () => void
+    buttonText?: string,
+    ButtonIcon?: OverridableComponent<SvgIconTypeMap<{}, "svg">>, 
+    backwardNav?: () => void,
+    forwardNav?: () => void,
+    textProps?: string,
 }
 
 export interface IBidirectionalPage {

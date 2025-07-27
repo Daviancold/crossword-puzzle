@@ -8,6 +8,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import { IAlertDialog } from "../types/IAlertDialog";
+import { useRecoilState } from "recoil";
+import { puzzleStatus } from "../atom/puzzleStateAtom";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -19,11 +21,11 @@ const Transition = React.forwardRef(function Transition(
 });
 
 export default function AlertDialogSlide({
-  puzzleStatus,
   checkPuzzle,
   nextPage,
 }: IAlertDialog) {
   const [open, setOpen] = React.useState(false);
+  const [isSolved, _] = useRecoilState(puzzleStatus);
 
   const handleClickOpen = () => {
     checkPuzzle();
@@ -31,7 +33,7 @@ export default function AlertDialogSlide({
   };
 
   const handleClose = () => {
-    if (puzzleStatus) {
+    if (isSolved) {
       nextPage();
     }
     setOpen(false);
