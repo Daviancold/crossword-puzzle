@@ -7,6 +7,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
+import { IAlertDialog } from "../types/IAlertDialog";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -17,22 +18,37 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide() {
+export default function AlertDialogSlide({
+  puzzleStatus,
+  checkPuzzle,
+  nextPage,
+}: IAlertDialog) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
+    checkPuzzle();
     setOpen(true);
   };
 
   const handleClose = () => {
+    if (puzzleStatus) {
+      nextPage();
+    }
     setOpen(false);
   };
 
+  // React.useEffect(() => {
+  //   handleClickOpen;
+  // }, [puzzleStatus]);
+
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Slide in alert dialog
-      </Button>
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={handleClickOpen}
+      >
+        Check
+      </button>
       <Dialog
         open={open}
         slots={{
@@ -42,16 +58,20 @@ export default function AlertDialogSlide() {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle>
+          {puzzleStatus ? "Congratulations!" : "It's not correct 😢😭"}
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
+            {puzzleStatus
+              ? "You have completed it 😎😋😁 So proud of you!"
+              : "Please try again okieee you got this queen!! 👑"}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose}>Agree</Button>
+          <Button onClick={handleClose}>
+            {puzzleStatus ? "Continue" : "Retry"}
+          </Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>
