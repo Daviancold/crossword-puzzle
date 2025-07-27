@@ -61,18 +61,18 @@ export default function AlertDialogSlide({
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle>
-          {puzzleStatus ? "Congratulations!" : "It's not correct 😢😭"}
+          {isSolved ? "Congratulations!" : "It's not correct 😢😭"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            {puzzleStatus
+            {isSolved
               ? "You have completed it 😎😋😁 So proud of you!"
               : "Please try again okieee you got this queen!! 👑"}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>
-            {puzzleStatus ? "Continue" : "Retry"}
+            {isSolved ? "Continue" : "Retry"}
           </Button>
         </DialogActions>
       </Dialog>
