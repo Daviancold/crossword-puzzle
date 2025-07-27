@@ -4,7 +4,7 @@ import type { IBackwardPage } from "../types/IPageNavigation";
 export const BackHeader: React.FC<IBackwardPage> = ({ backPage }) => {
   return (
     <div
-      className="flex flex-row pb-4 gap-2 hover:underline absolute top-6 left-8 font-bold"
+      className="flex flex-row pb-4 gap-2 hover:underline fixed top-6 left-8 font-bold"
       onClick={backPage}
     >
       <ArrowBackIcon />
