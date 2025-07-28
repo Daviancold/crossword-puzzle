@@ -8,7 +8,7 @@ export const QuestionPage: React.FC<IBidirectionalPage> = ({
   backPage,
 }) => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center gap-40 md:gap-96 lg:gap-96 p-4 z-0">
+    <div className="flex flex-col md:flex-row items-center justify-center gap-40 md:gap-60 lg:gap-96 p-4 z-0">
       <img
         src={gif1}
         className="w-2/3 md:w-1/4 h-auto object-contain"
