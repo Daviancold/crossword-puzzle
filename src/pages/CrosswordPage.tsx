@@ -33,6 +33,8 @@ export const CrosswordPage: React.FC<IBidirectionalPage> = (props) => {
     useRef(null);
 
   const handleClear = () => {
+    setIsSolved(false);
+    setShowContinue(false);
     crosswordRef.current?.reset();
   };
 
