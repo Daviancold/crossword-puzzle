@@ -7,7 +7,7 @@ import { RecoilRoot } from "recoil";
 import { FinalPage } from "./pages/FinalPage";
 
 function App() {
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(0);
 
   const setBack = () => {
     setPage(page - 1);
