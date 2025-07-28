@@ -2,7 +2,7 @@ import { SvgIconTypeMap } from "@mui/material"
 import { OverridableComponent } from "@mui/material/OverridableComponent"
 
 export interface IBackwardPage {
-    backPage: () => void
+    backPage: () => void,
 }
 
 export interface IForwardPage {

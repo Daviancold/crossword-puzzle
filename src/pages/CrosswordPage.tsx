@@ -67,7 +67,7 @@ export const CrosswordPage: React.FC<IBidirectionalPage> = (props) => {
   return (
     <div className="content-center w-full h-full mx-10 md:mx-20">
       <BackHeader backPage={props.backPage} />
-      <div className="flex flex-col md:flex-row flex-grow mt-16">
+      <div className="flex flex-col md:flex-row flex-grow sm:mt-6 md:mt-12 lg:mt-14">
         <ThemeProvider theme={theme}>
           <Crossword data={crossword1} theme={theme} ref={crosswordRef} />
         </ThemeProvider>

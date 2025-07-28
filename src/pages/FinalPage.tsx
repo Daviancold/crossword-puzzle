@@ -7,16 +7,16 @@ import image3 from "../assets/image3.jpg";
 export const FinalPage: React.FC<IBackwardPage> = ({ backPage }) => {
   return (
     <>
-      <div className="flex flex-wrap justify-center gap-4 p-4 z-0">
-        <img
-          src={image1}
-          className="w-full sm:w-1/2 md:w-1/3 h-auto object-contain"
-          alt="Image 1"
-        />
+      <div className="flex flex-wrap justify-center gap-4 p-4 mt-10 z-0">
         <img
           src={image2}
           className="w-full sm:w-1/2 md:w-1/3 h-auto object-contain"
           alt="Image 2"
+        />
+        <img
+          src={image1}
+          className="w-full sm:w-1/2 md:w-1/3 h-auto object-contain"
+          alt="Image 1"
         />
         <img
           src={image3}
